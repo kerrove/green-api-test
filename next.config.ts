@@ -4,7 +4,7 @@ const nextConfig: NextConfig = {
 	/* config options here */
 	experimental: {
 		agentFeedback: true,
-		optimizePackageImports: ['lucide-react'],
+		optimizePackageImports: ['lucide-react']
 	},
 	cacheComponents: true,
 	partialPrefetching: true,
@@ -13,17 +13,17 @@ const nextConfig: NextConfig = {
 	poweredByHeader: false,
 	logging: {
 		fetches: {
-			hmrRefreshes: true,
-		},
+			hmrRefreshes: true
+		}
 	},
 	turbopack: {
 		rules: {
 			'*.css': {
 				loaders: ['@tailwindcss/turbopack'],
-				as: '*.css',
-			},
-		},
-	},
+				as: '*.css'
+			}
+		}
+	}
 }
 
 export default nextConfig

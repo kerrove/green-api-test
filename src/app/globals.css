@@ -1,26 +1,70 @@
-@import "tailwindcss";
+@import 'tailwindcss';
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+@layer base {
+	:root {
+		--rail: #141419;
+		--bg: #17171d;
+		--panel: #1c1c23;
+		--panel-hover: #24242c;
+		--panel-active: #2d2d38;
+		--border: #262630;
+		--input: #26262f;
+		--text: #ececf1;
+		--muted: #8d8d9b;
+		--primary: #2f80ff;
+		--primary-hover: #4b91ff;
+		--bubble-in: #2d2d3b;
+		--bubble-out: #2a4a85;
+		--red: #ff6b6b;
+	}
+
+	:focus-visible {
+		outline: 2px solid var(--primary);
+		outline-offset: 2px;
+	}
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+	--color-rail: var(--rail);
+	--color-bg: var(--bg);
+	--color-panel: var(--panel);
+	--color-panel-hover: var(--panel-hover);
+	--color-panel-active: var(--panel-active);
+	--color-border: var(--border);
+	--color-input: var(--input);
+	--color-text: var(--text);
+	--color-muted: var(--muted);
+	--color-primary: var(--primary);
+	--color-primary-hover: var(--primary-hover);
+	--color-bubble-in: var(--bubble-in);
+	--color-bubble-out: var(--bubble-out);
+	--color-red: var(--red);
+	--font-sans: var(--font-inter);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+@custom-variant md (@media (max-width: 768px));
+
+html,
+body {
+	height: 100%;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+	background: var(--bg);
+	color: var(--text);
+	color-scheme: dark;
+}
+
+@utility thin-scrollbar {
+	scrollbar-width: thin;
+	scrollbar-color: var(--panel-active) transparent;
+}
+
+@media (prefers-reduced-motion: reduce) {
+	*,
+	*::before,
+	*::after {
+		animation-duration: 0.01ms !important;
+		transition-duration: 0.01ms !important;
+	}
 }

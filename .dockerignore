@@ -45,3 +45,4 @@ playwright.config.ts
 <!-- Environments -->
 .env*
 !.env.production
+!.env
