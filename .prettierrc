@@ -1,0 +1,61 @@
+{
+	"singleAttributePerLine": true,
+	"jsxSingleQuote": true,
+	"bracketSpacing": true,
+	"trailingComma": "none",
+	"arrowParens": "avoid",
+	"proseWrap": "always",
+	"singleQuote": true,
+	"printWidth": 100,
+	"useTabs": true,
+	"tabWidth": 2,
+	"semi": false,
+
+	"importOrder": [
+		"<THIRD_PARTY_MODULES>",
+		"^src/services/(.*)$",
+		"^services/(.*)$",
+		"^src/components/(.*)$",
+		"^components/(.*)$",
+		"^components/forms/(.*)$",
+		"^forms/(.*)$",
+		"^src/ui/(.*)$",
+		"^ui/(.*)$",
+		"^src/providers/(.*)$",
+		"^providers/(.*)$",
+		"^src/constants/(.*)$",
+		"^constants/(.*)$",
+		"^src/config/(.*)$",
+		"^config/(.*)$",
+		"^src/store/(.*)$",
+		"^store/(.*)$",
+		"^src/hooks/(.*)$",
+		"^hooks/(.*)$",
+		"^src/utils/(.*)$",
+		"^utils/(.*)$",
+		"^src/api/(.*)$",
+		"^api/(.*)$",
+		"^src/server/(.*)$",
+		"^server/(.*)$",
+		"^src/types/(.*)$",
+		"^types/(.*)$",
+		"^(?!.*\\.sass$)(../.*)$",
+		"^(?!.*\\.sass$)(./.*)$",
+		"^(?!.*\\.scss$)(../.*)$",
+		"^(?!.*\\.scss$)(./.*)$",
+		".*\\.scss$"
+	],
+	"importOrderSeparation": true,
+	"importOrderSortSpecifiers": true,
+	"plugins": ["@trivago/prettier-plugin-sort-imports"],
+
+	"overrides": [
+		{
+			"comment": "В тестах jest.mock должен стоять выше импортов. Плагин сортировки всегда поднимает импорты в самое начало файла, поэтому для тестов он выключен — порядок импортов там поддерживаем руками.",
+			"files": ["**/*.test.ts", "**/*.test.tsx"],
+			"options": {
+				"plugins": []
+			}
+		}
+	]
+}

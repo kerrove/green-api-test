@@ -1,0 +1,47 @@
+<!-- Build -->
+node_modules
+.next
+build
+dist
+
+<!-- Workspace -->
+Dockerfile
+Makefile
+*.md
+.DS_Store
+.vscode
+.idea
+docs
+
+<!-- GIT -->
+.gitignore
+.github
+.gitea
+.gitlab
+.git
+
+<!-- AI -->
+.claude
+.codex
+graphify-out
+.impeccable
+
+<!-- Testing -->
+**/__mocks__
+**/__snapshots__
+**/__tests__
+coverage
+babel.*
+jest.*
+playwright.config.ts
+**/test-results
+**/playwright-report
+**/.swc
+*.test.tsx
+*.spec.tsx
+*.test.ts
+*.spec.ts
+
+<!-- Environments -->
+.env*
+!.env.production
