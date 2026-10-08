@@ -16,6 +16,7 @@
 		--bubble-in: #2d2d3b;
 		--bubble-out: #2a4a85;
 		--red: #ff6b6b;
+		--warning: #f5b14c;
 	}
 
 	:focus-visible {
@@ -39,6 +40,7 @@
 	--color-bubble-in: var(--bubble-in);
 	--color-bubble-out: var(--bubble-out);
 	--color-red: var(--red);
+	--color-warning: var(--warning);
 	--font-sans: var(--font-inter);
 }
 

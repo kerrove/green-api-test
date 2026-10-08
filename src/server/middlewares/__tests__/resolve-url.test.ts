@@ -18,8 +18,6 @@ describe('resolveUrl', () => {
 	})
 
 	it('с пустым доменом берёт адрес запроса', () => {
-		expect(resolveUrl('/login', 'http://localhost/logout', '')).toBe(
-			'http://localhost/login'
-		)
+		expect(resolveUrl('/login', 'http://localhost/logout', '')).toBe('http://localhost/login')
 	})
 })

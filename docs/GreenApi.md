@@ -11,7 +11,8 @@
 | Метод | HTTP | Где используется | Доступен через прокси |
 |---|---|---|---|
 | [`getStateInstance`](https://green-api.com/docs/api/account/GetStateInstance/) | GET | проверка при входе | нет |
-| [`getSettings`](https://green-api.com/docs/api/account/GetSettings/) | GET | проверка типа инстанса при входе | нет |
+| [`getSettings`](https://green-api.com/docs/api/account/GetSettings/) | GET | проверка типа инстанса при входе, проверка настроек получения | нет |
+| [`setSettings`](https://green-api.com/docs/api/account/SetSettings/) | POST | включение получения входящих по кнопке | нет |
 | [`checkWhatsapp`](https://green-api.com/docs/api/service/CheckWhatsapp/) | POST | есть ли у номера WhatsApp | да |
 | [`sendMessage`](https://green-api.com/docs/api/sending/SendMessage/) | POST | отправка текста | да |
 | [`receiveNotification`](https://green-api.com/docs/api/receiving/technology-http-api/ReceiveNotification/) | GET | получение входящих | да |
@@ -138,4 +139,22 @@ flowchart TD
 
 Уведомление удаляется, даже если его не удалось разобрать, иначе оно навсегда застряло бы в начале очереди. Пока очередь не пуста, запросы идут подряд без паузы.
 
-Для работы `receiveNotification` в настройках инстанса должен быть пустой `webhookUrl`, иначе GREEN-API вернёт ошибку.
+## Настройки получения входящих
+
+Чтобы входящие попадали в очередь `receiveNotification`, у инстанса должны быть:
+
+- `incomingWebhook: "yes"` — получение уведомлений о входящих;
+- пустой `webhookUrl` — иначе уведомления уходят на этот адрес, а не в очередь.
+
+**У нового инстанса все настройки выключены**, поэтому сообщения отправляются, но ответы не приходят — без ошибок, очередь просто пустая.
+
+Приложение проверяет это само:
+
+| Что | Где |
+|---|---|
+| `GET /api/instance/receiving` | вызывает `getSettings` и отдаёт только `{ canReceive, incomingEnabled, webhookUrlSet }` — без `webhookUrlToken` и других настроек |
+| `POST /api/instance/receiving` | вызывает `setSettings` с фиксированным набором `{ incomingWebhook: "yes", webhookUrl: "" }`; тело запроса клиента не используется |
+| `server/green-api/receiving-settings.ts` | `toReceivingStatus` и `ENABLE_RECEIVING_SETTINGS` — чистая логика, покрыта тестами |
+| `components/chat/sidebar/ReceivingBanner.tsx` | плашка в списке чатов с объяснением и кнопкой |
+
+Настройки не меняются без действия пользователя: если `webhookUrl` используется другой интеграцией, плашка предупреждает, что кнопка его очистит. После сохранения GREEN-API перезапускает инстанс и применяет настройки в течение 5 минут. Сообщения, пришедшие до этого, в очередь не попадут.

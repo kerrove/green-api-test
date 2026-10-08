@@ -1,6 +1,6 @@
 # Тесты
 
-Unit-тесты на Jest 30 и React Testing Library. Сейчас — 158 тестов в 25 файлах.
+Unit-тесты на Jest 30 и React Testing Library. Сейчас — 174 теста в 29 файлах.
 
 ## Запуск
 

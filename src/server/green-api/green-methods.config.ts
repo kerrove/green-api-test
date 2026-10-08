@@ -10,7 +10,9 @@ export interface IGreenMethodConfig {
 
 export type TProxyMethod = Exclude<
 	EnumGreenMethod,
-	typeof EnumGreenMethod.GET_STATE_INSTANCE | typeof EnumGreenMethod.GET_SETTINGS
+	| typeof EnumGreenMethod.GET_STATE_INSTANCE
+	| typeof EnumGreenMethod.GET_SETTINGS
+	| typeof EnumGreenMethod.SET_SETTINGS
 >
 
 export const GREEN_METHODS: Record<TProxyMethod, IGreenMethodConfig> = {

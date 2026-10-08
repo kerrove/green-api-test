@@ -1,6 +1,7 @@
 export const EnumGreenMethod = {
 	GET_STATE_INSTANCE: 'getStateInstance',
 	GET_SETTINGS: 'getSettings',
+	SET_SETTINGS: 'setSettings',
 	CHECK_WHATSAPP: 'checkWhatsapp',
 	SEND_MESSAGE: 'sendMessage',
 	RECEIVE_NOTIFICATION: 'receiveNotification',
@@ -43,6 +44,23 @@ export const WHATSAPP_TYPE_INSTANCE = 'whatsapp'
 export interface ISettingsResponse {
 	typeInstance?: string
 	wid?: string
+	webhookUrl?: string
+	incomingWebhook?: string
+}
+
+export interface ISetSettingsData {
+	incomingWebhook?: 'yes' | 'no'
+	webhookUrl?: string
+}
+
+export interface ISetSettingsResponse {
+	saveSettings: boolean
+}
+
+export interface IReceivingStatus {
+	canReceive: boolean
+	incomingEnabled: boolean
+	webhookUrlSet: boolean
 }
 
 export interface ICheckWhatsappData {

@@ -60,6 +60,7 @@ src/
 │   ├── logout/route.ts              # GET: стирает cookie, редирект на /login
 │   └── api/
 │       ├── auth/login/route.ts      # POST: проверка инстанса, запись cookie
+│       ├── instance/receiving/      # GET/POST: проверка и включение получения входящих
 │       └── green/[method]/route.ts  # прокси к GREEN-API по белому списку
 ├── components/
 │   ├── ui/                          # Button, IconButton, Field, Avatar

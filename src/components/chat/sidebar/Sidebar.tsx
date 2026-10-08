@@ -9,6 +9,7 @@ import { useChatsStore } from 'store/chats.store'
 import { useSortedChats } from 'hooks/useSortedChats'
 
 import { ChatList } from './ChatList'
+import { ReceivingBanner } from './ReceivingBanner'
 import { SidebarHeader } from './SidebarHeader'
 
 export const Sidebar: FC = () => {
@@ -24,6 +25,7 @@ export const Sidebar: FC = () => {
 			) : (
 				<>
 					<SidebarHeader onCreateChat={() => setIsCreating(true)} />
+					<ReceivingBanner />
 					<ChatList
 						chats={chats}
 						activeChatId={activeChatId}

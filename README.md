@@ -9,7 +9,7 @@
 ![TypeScript](https://img.shields.io/badge/TypeScript-5-3178C6?logo=typescript&logoColor=white)
 ![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-4-06B6D4?logo=tailwindcss&logoColor=white)
 ![Bun](https://img.shields.io/badge/Bun-1.3-000000?logo=bun&logoColor=white)
-![Jest](https://img.shields.io/badge/tests-158_passed-C21325?logo=jest&logoColor=white)
+![Jest](https://img.shields.io/badge/tests-174_passed-C21325?logo=jest&logoColor=white)
 ![Docker](https://img.shields.io/badge/Docker-ready-2496ED?logo=docker&logoColor=white)
 
 </div>
@@ -21,6 +21,7 @@
 - ✉️ **Отправка сообщений** методом [`SendMessage`](https://green-api.com/docs/api/sending/SendMessage/).
 - 📥 **Получение ответов** через [HTTP API](https://green-api.com/docs/api/receiving/technology-http-api/): long-polling `ReceiveNotification` + `DeleteNotification`, пауза на скрытой вкладке.
 - 🧩 **Автосоздание чата**, если написал новый собеседник; поддержка ответов с цитатой и групповых чатов.
+- 🛠️ **Проверка настроек инстанса** — если получение входящих выключено, приложение покажет это и включит его по кнопке.
 - 💾 **История сохраняется** в браузере и сбрасывается при входе под другим инстансом.
 - 📱 **Адаптивность** — на телефоне список чатов и переписка переключаются, как в мобильном мессенджере.
 
@@ -30,7 +31,7 @@
 
 1. Зарегистрируйтесь в [личном кабинете GREEN-API](https://console.green-api.com) и создайте **WhatsApp**-инстанс.
 2. Подключите WhatsApp: откройте на телефоне WhatsApp → **Связанные устройства** → **Привязка устройства** и отсканируйте QR-код из личного кабинета. Статус инстанса должен стать «авторизован».
-3. Проверьте, что в настройках инстанса поле `webhookUrl` пустое — иначе приложение не сможет получать сообщения.
+3. Для получения ответов у инстанса должно быть включено получение входящих и пустой `webhookUrl`. У нового инстанса всё выключено — после входа приложение покажет плашку с кнопкой **Включить получение**, и GREEN-API применит настройки в течение 5 минут.
 4. Скопируйте со страницы инстанса три значения: `apiUrl`, `idInstance` и `apiTokenInstance`. Они понадобятся при входе.
 
 ### 2. Скачайте проект и создайте `.env`
@@ -139,7 +140,7 @@ docker rm -f green-api-chat       # остановить и удалить ко�
 
 | Инструмент | Зачем |
 |---|---|
-| [Jest](https://jestjs.io) 30 + [Testing Library](https://testing-library.com) | unit-тесты: 158 тестов, клиентская и серверная части |
+| [Jest](https://jestjs.io) 30 + [Testing Library](https://testing-library.com) | unit-тесты: 174 теста, клиентская и серверная части |
 | [ESLint](https://eslint.org) 9 + [Prettier](https://prettier.io) | линтинг и форматирование, сортировка импортов |
 | [Knip](https://knip.dev) | поиск неиспользуемого кода и зависимостей |
 
