@@ -37,7 +37,7 @@
 ### 2. Скачайте проект и создайте `.env`
 
 ```bash
-git clone <адрес-репозитория> green-api-test
+git clone https://github.com/kerrove/green-api-test green-api-test
 cd green-api-test
 ```
 
